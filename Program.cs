@@ -8,8 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 //injeção de dependencia
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=assetflow.db")); //configuração do sqlite
+builder.Services.AddControllers(); //para procurar na pasta controllers
 
 var app = builder.Build();
+app.MapControllers();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
